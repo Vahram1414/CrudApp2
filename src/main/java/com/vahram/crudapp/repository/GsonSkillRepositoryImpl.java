@@ -70,6 +70,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
         return null;
     }
 
+
     @Override
     public void deleteById(Integer id) throws IOException {
 //        получить коллекцию скилов
@@ -79,10 +80,12 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
         for (Skill sks : skillList) {
             if (getAllSkillInternal().equals(sks.getId())) {
                 skillList.remove(sks);
-                writeSkillsInternal(skillList);
             }
         }
+        writeSkillsInternal(skillList);
+
     }
+
 
     private List<Skill> getAllSkillInternal() throws IOException {
         FileInputStream fisTargetFile = new FileInputStream(new File("D:\\Моя практика\\crudapp\\src\\main\\resources\\skills.json"));
