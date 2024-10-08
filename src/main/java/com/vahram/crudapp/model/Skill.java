@@ -1,3 +1,4 @@
+
 package com.vahram.crudapp.model;
 
 public class Skill {
