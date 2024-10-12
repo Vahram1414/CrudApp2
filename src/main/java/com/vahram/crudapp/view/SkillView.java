@@ -15,4 +15,24 @@ public class SkillView {
         Skill createdSkill = skillController.createSkill(skillName);
         System.out.println("Created skill: " + createdSkill);
     }
+
+    public void updateSkill() {
+        System.out.println("Choose skill");
+        Integer updatedSkill = scanner.nextInt();
+
+    }
+
+    public void deleteSkill() {
+        System.out.println("Enter Skill id");
+        Integer skId = scanner.nextInt();
+        skillController.deleteSkill(skId);
+    }
+
+    public Skill getSkill() {
+        System.out.println("Get skll");
+        Integer skillId = scanner.nextInt();
+        Skill currentSkill = skillController.getSkill(skillId);
+        System.out.println("Getting skill: " + currentSkill);
+        return currentSkill;
+    }
 }

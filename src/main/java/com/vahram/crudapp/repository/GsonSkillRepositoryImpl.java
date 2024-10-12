@@ -44,9 +44,6 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public Skill update(Skill skillToUpdate) {
-        //РїРѕР»СѓС‡РёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ СЃРєРёР»РѕРІ
-        //СЃСЂРµРґРё РЅРёС… РїРѕР»СѓС‡РёС‚СЊ С‚РѕС‚ СЃРєРёР»Р», РєРѕС‚РѕСЂС‹Р№ РёРјРµРµС‚ Р°Р№РґРёС€РЅРёРє РІ РїРµСЂРµРґР°РЅРЅРѕРј Р°СЂРіСѓРјРµРЅС‚Рµ Рё РµСЃР»Рё РѕРЅРё СЃРѕРІРїР°РґР°СЋС‚, С‚Рѕ Р·Р°РјРµРЅРёС‚СЊ С‚РµРєСѓС‰РёР№ СЃРєРёР» РЅР° РїСЂРёС€РµРґС€РёР№
-        //Р·Р°РїРёСЃР°С‚СЊ РµРіРѕ РІ С„Р°Р№Р» РєРѕР»Р»РµРєС†РёСЋ СЃ Р·Р°РјРµРЅРµРЅРЅС‹Рј СЃРєРёР»РѕРј Рё РІРµСЂРЅСѓС‚СЊ СЃРєРёР»Р»
         List<Skill> skills = getAllSkillInternal().stream()
                 .map(existingSkill -> {
                     if(existingSkill.getId().equals(skillToUpdate.getId())) {
@@ -62,9 +59,6 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public void deleteById(Integer id) {
-//        РїРѕР»СѓС‡РёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ СЃРєРёР»РѕРІ
-//        СѓРґР°Р»РёС‚СЊ РёР· РєРѕР»Р»РµРєС†РёСЋ СЃРєРёР»Р» Сѓ РєРѕС‚РѕСЂРѕРіРѕ Р°Р№РґРё СЂР°РІРµРЅ РїРµСЂРµРґР°РЅРЅРѕРјСѓ
-//        Р·Р°РїРёСЃР°С‚СЊ РѕР±РЅРѕРІР»РµРЅРЅСѓСЋ РєРѕР»Р»РµРєС†РёСЋ Р±РµР· СѓРґР°Р»РµРЅРЅРѕРі РѕСЃРєРёР»Р° РІ С„Р°Р№Р»
         List<Skill> skillList = getAllSkillInternal();
         skillList.removeIf(existingSkill -> existingSkill.getId().equals(id));
         writeSkillsInternal(skillList);
