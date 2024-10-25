@@ -10,7 +10,7 @@ public class SkillController {
     private final SkillRepository skillRepository = new GsonSkillRepositoryImpl();
 
     public List<Skill> getAll() {
-        return getAll();
+        return skillRepository.getAll();
     }
 
     public Skill getSkill(int id) {

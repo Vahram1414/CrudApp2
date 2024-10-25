@@ -13,11 +13,12 @@ import static java.lang.System.exit;
 public class SkillView {
     private final SkillController skillController = new SkillController();
     private final Scanner scanner = new Scanner(System.in);
-    boolean exit;
 
     public void runMenu() {
-        while (!exit) {
-            int userInput = getInput();
+        int userInput;
+        while (true) {
+            printMenu();
+            userInput = getInput();
             performAction(userInput);
         }
     }
@@ -28,6 +29,7 @@ public class SkillView {
         System.out.println("2 - получения скила");
         System.out.println("3 - обновление скила");
         System.out.println("4 - удаление скила");
+        System.out.println("5 - получение скилов");
         System.out.println("9 - Выход");
     }
 
@@ -46,12 +48,12 @@ public class SkillView {
     }
 
     private void performAction(int userInput) {
-                switch (userInput) {
+        switch (userInput) {
             case 1:
                 createSkill();
                 break;
             case 2:
-                updateSkill();
+                getSkill();
                 break;
             case 3:
                 deleteSkill();
@@ -59,59 +61,20 @@ public class SkillView {
             case 4:
                 deleteSkill();
                 break;
+            case 5:
+                getSkills();
+                break;
             case 9:
-                exit = true;
+                System.out.println("Exit");
+                System.exit(0);
+        }
     }
 
-//    public static void start() {
-//
-//        System.out.println("Нажмите 0 для вызова меню");
-//        int userInpout = sc.nextInt();
-//        System.out.println("1 - создания скила , 2 - получения скила, 3 - обновление скила, 4 - удаление скила, 5 - поучение всех скилов, 9 - выход");
-//        sc.nextInt();
-//        System.out.println("Вы выбрали " + menu);
-
-//        switch (userInout2) {
-//            case 1:
-//                System.out.println(menu.get(1));
-//                break;
-//            case 2:
-//                System.out.println(menu.get(2));
-//                break;
-//            case 3:
-//                System.out.println(menu.get(3));
-//                break;
-//            case 4:
-//                System.out.println(menu.get(4));
-//                break;
-//            case 5:
-//                System.out.println(menu.get(5));
-//            case 9:
-//                break;
-//        }
-
-//        int userInpout = sc.nextInt();
-//        int i = sc.nextInt(userIpout3 = 9);
-//        sc.nextInt(userIpout3 = 9);
-//        while (userInpout == sc.nextInt(9));
-//        if (userInpout == 1) {
-//            System.out.println("Вы создали скил " + menu.get(1));
-//        } else if (userInpout == 2) {
-//            System.out.println("Вы получили скил " + menu.get(2));
-//        } else if (userInpout == 3) {
-//            System.out.println("Вы обновили скил " + menu.get(3));
-//        } else if (userInpout == 4) {
-//            System.out.println("Вы удалили скил " + menu.get(4));
-//        } else if (userInpout == 5) {
-//            System.out.println("Вы получили все скилы " + menu.get(5));
-//        } else if (userInpout == 9) {
-//            sc.close();
-//        } else {
-//            sc.nextInt();
-//        }
-
+    private void getSkills() {
+        List<Skill> skills = skillController.getAll();
+        System.out.println("Список скиллов");
+        System.out.println(skills);
     }
-
 
 
     private void createSkill() {
@@ -123,6 +86,7 @@ public class SkillView {
     }
 
     private void updateSkill() {
+        getSkills();
         System.out.println("Choose skill");
         Integer updSk = scanner.nextInt();
 //        skillController.updateSkill(updSk);
@@ -135,12 +99,11 @@ public class SkillView {
         skillController.deleteSkill(skId);
     }
 
-    private Skill getSkill() {
+    private void getSkill() {
         System.out.println("Enter id");
         Integer skillId = scanner.nextInt();
+        System.out.println("entered id: " + skillId);
         Skill currentSkill = skillController.getSkill(skillId);
-        System.out.println("entered id: " + currentSkill);
-        skillController.getSkill(skillId);
-        return currentSkill;
+        System.out.println("Skill: " + currentSkill);
     }
 }
