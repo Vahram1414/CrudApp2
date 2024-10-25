@@ -69,7 +69,6 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
                 .mapToInt(Skill::getId).max().orElse(0) + 1;
     }
 
-
     private List<Skill> getAllSkillInternal() {
         try (FileInputStream fisTargetFile = new FileInputStream(FILE_PATH)) {
             String targetFileStr = IOUtils.toString(fisTargetFile, FILE_ENCODING);
