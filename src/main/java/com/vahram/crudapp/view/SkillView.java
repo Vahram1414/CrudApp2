@@ -76,7 +76,6 @@ public class SkillView {
         System.out.println(skills);
     }
 
-
     private void createSkill() {
         System.out.println("Enter skill name: ");
         String skillName = scanner.nextLine();

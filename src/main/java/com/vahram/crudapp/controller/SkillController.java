@@ -32,7 +32,6 @@ public class SkillController {
     }
 
     public void deleteSkill(int id) {
-
         skillRepository.deleteById(id);
     }
 
