@@ -56,7 +56,7 @@ public class SkillView {
                 getSkill();
                 break;
             case 3:
-                deleteSkill();
+                updateSkill();
                 break;
             case 4:
                 deleteSkill();
@@ -88,6 +88,11 @@ public class SkillView {
         getSkills();
         System.out.println("Choose skill");
         Integer updSk = scanner.nextInt();
+        System.out.println("Update the skill");
+        skillController.updateSkill(14, "Groovy");
+        System.out.println(updSk);
+
+
 //        skillController.updateSkill(updSk);
 
     }

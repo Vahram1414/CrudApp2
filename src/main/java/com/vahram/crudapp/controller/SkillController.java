@@ -34,8 +34,4 @@ public class SkillController {
     public void deleteSkill(int id) {
         skillRepository.deleteById(id);
     }
-
-//    public void updateSkill(Integer updSk) {
-//        skillRepository.deleteById(id);
-//    }
 }
