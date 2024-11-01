@@ -88,9 +88,10 @@ public class SkillView {
         getSkills();
         System.out.println("Choose skill");
         Integer updSk = scanner.nextInt();
+        String updSk1 = scanner.nextLine();
         System.out.println("Update the skill");
-        skillController.updateSkill(14, "Groovy");
-        System.out.println(updSk);
+        skillController.updateSkill(updSk, updSk1);
+//        System.out.println(updSk);
 
 
 //        skillController.updateSkill(updSk);
