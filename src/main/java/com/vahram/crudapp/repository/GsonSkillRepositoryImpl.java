@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GsonSkillRepositoryImpl implements SkillRepository {
-    private final static String FILE_PATH = "/Users/proselyte/Documents/@proselyte/students/vagrama/CrudApp2/src/main/resources/skills.json";
+    private final static String FILE_PATH = "D:\\Моя практика\\crudapp\\src\\main\\resources\\skills.json";
     private final static String FILE_ENCODING = "UTF-8";
 
     private final static Gson GSON = new Gson();
@@ -84,7 +84,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
         try (Writer writer = new FileWriter(FILE_PATH)) {
             GSON.toJson(skills, writer);
         } catch (IOException e) {
-            System.out.println("РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё С„Р°Р№Р»Р°");
+            System.out.println("Ошибка при записи файла");
         }
     }
 }

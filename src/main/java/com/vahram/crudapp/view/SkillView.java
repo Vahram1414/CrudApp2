@@ -3,12 +3,14 @@ package com.vahram.crudapp.view;
 import com.sun.jdi.Value;
 import com.vahram.crudapp.controller.SkillController;
 import com.vahram.crudapp.model.Skill;
+import com.vahram.crudapp.repository.GsonSkillRepositoryImpl;
+import com.vahram.crudapp.repository.SkillRepository;
 
 import java.security.Key;
 import java.util.*;
 
 import static java.awt.SystemColor.menu;
-import static java.lang.System.exit;
+import static java.lang.System.*;
 
 public class SkillView {
     private final SkillController skillController = new SkillController();
@@ -36,7 +38,7 @@ public class SkillView {
     private int getInput() {
         Scanner sc = new Scanner(System.in);
         int userInput = -1;
-        while (userInput < 0 || userInput == 9) {
+        while (userInput < 0 || userInput > 9) {
             try {
                 System.out.println("Введите цифру");
                 userInput = Integer.parseInt(sc.nextLine());
@@ -67,13 +69,13 @@ public class SkillView {
             case 9:
                 System.out.println("Exit");
                 System.exit(0);
+                break;
         }
     }
 
     private void getSkills() {
         List<Skill> skills = skillController.getAll();
-        System.out.println("Список скиллов");
-        System.out.println(skills);
+        System.out.println("Список скиллов" + skills);
     }
 
     private void createSkill() {
@@ -85,16 +87,15 @@ public class SkillView {
     }
 
     private void updateSkill() {
-        getSkills();
-        System.out.println("Choose skill");
-        Integer updSk = scanner.nextInt();
-        String updSk1 = scanner.nextLine();
-        System.out.println("Update the skill");
-        skillController.updateSkill(updSk, updSk1);
-//        System.out.println(updSk);
-
-
-//        skillController.updateSkill(updSk);
+        List<Skill> skills = skillController.getAll();
+        out.println(skills);
+        out.println("Укажите айди скила");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Укажите имя");
+        String name = scanner.nextLine();
+        Skill updatedSkill = skillController.updateSkill(id, name);
+        System.out.println("Обновленный скил " + updatedSkill);
 
     }
 
