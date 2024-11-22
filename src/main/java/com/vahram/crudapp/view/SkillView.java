@@ -32,7 +32,7 @@ public class SkillView {
         System.out.println("3 - обновление скила");
         System.out.println("4 - удаление скила");
         System.out.println("5 - получение скилов");
-        System.out.println("9 - Выход");
+        System.out.println("9 - Назад");
     }
 
     private int getInput() {
@@ -67,8 +67,8 @@ public class SkillView {
                 getSkills();
                 break;
             case 9:
-                System.out.println("Exit");
-                System.exit(0);
+                System.out.println("Back");
+//                System.exit(0); эту стркоу удалить
                 break;
         }
     }
@@ -103,6 +103,7 @@ public class SkillView {
         System.out.println("Enter Skill id");
         Integer skId = scanner.nextInt();
         skillController.deleteSkill(skId);
+        out.println("Вы удалили скил " + skId);
     }
 
     private void getSkill() {

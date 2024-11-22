@@ -19,7 +19,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public Skill getById(Integer id) {
-        return getAllSkillInternal().stream()
+        return getAllSkillsInternal().stream()
                 .filter(skill -> skill.getId().equals(id))
                 .findAny()
                 .orElse(null);
@@ -27,12 +27,12 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public List<Skill> getAll() {
-        return getAllSkillInternal();
+        return getAllSkillsInternal();
     }
 
     @Override
     public Skill create(Skill skillToCreate) {
-        List<Skill> skillList = getAllSkillInternal();
+        List<Skill> skillList = getAllSkillsInternal();
 
         int generatedId = generateNewId(skillList);
         skillToCreate.setId(generatedId);
@@ -44,7 +44,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public Skill update(Skill skillToUpdate) {
-        List<Skill> skills = getAllSkillInternal().stream()
+        List<Skill> skills = getAllSkillsInternal().stream()
                 .map(existingSkill -> {
                     if(existingSkill.getId().equals(skillToUpdate.getId())) {
                         return skillToUpdate;
@@ -59,7 +59,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public void deleteById(Integer id) {
-        List<Skill> skillList = getAllSkillInternal();
+        List<Skill> skillList = getAllSkillsInternal();
         skillList.removeIf(existingSkill -> existingSkill.getId().equals(id));
         writeSkillsInternal(skillList);
     }
@@ -69,7 +69,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
                 .mapToInt(Skill::getId).max().orElse(0) + 1;
     }
 
-    private List<Skill> getAllSkillInternal() {
+    private List<Skill> getAllSkillsInternal() {
         try (FileInputStream fisTargetFile = new FileInputStream(FILE_PATH)) {
             String targetFileStr = IOUtils.toString(fisTargetFile, FILE_ENCODING);
             Type targetClassType = new TypeToken<ArrayList<Skill>>() {
