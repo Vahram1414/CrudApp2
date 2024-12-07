@@ -27,6 +27,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public List<Skill> getAll() {
+
         return getAllSkillsInternal();
     }
 

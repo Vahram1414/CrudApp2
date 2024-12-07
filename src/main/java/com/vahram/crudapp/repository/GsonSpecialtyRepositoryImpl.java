@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
-    private final static String FILE_PATH = "D:\\Моя практика\\crudapp\\src\\main\\resources\\skills.json";
+    private final static String FILE_PATH = "D:\\Моя практика\\crudapp\\src\\main\\resources\\specialty.json";
     private final static String FILE_ENCODING = "UTF-8";
 
     private final static Gson GSON = new Gson();
