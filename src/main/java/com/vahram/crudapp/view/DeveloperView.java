@@ -7,11 +7,14 @@ import com.vahram.crudapp.model.Developer;
 import com.vahram.crudapp.model.Skill;
 import com.vahram.crudapp.model.Specialty;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.lang.System.out;
+import static java.util.Arrays.stream;
 
 //через скилконтроллер и спешелтиконтроллер получить коллекции например, скилов,
 
@@ -89,16 +92,28 @@ public class DeveloperView {
         String developerFirstName = scanner.nextLine();
         System.out.println("Enter developer lastNname: ");
         String developerLastName = scanner.nextLine();
-        List<Specialty> specialties = specialtyController.getAll();
-        out.println(specialties);
-        out.println("Enter specialty id: ");
-        Integer developerSpecialtId = scanner.nextInt();
-        Specialty specialty = specialties.stream()
-                .filter(specialty -> specialty.getId().equals(developerSpecialtId));
+        List<Specialty> specDev = specialtyController.getAll();
+        out.println(specDev);
+        Integer developerSpecId = scanner.nextInt();
 
-                //Получить из коллекции спешелтис объект спешелти у которого айди = девелоперспешелти Айди
+        Specialty developerSpec = specDev.stream()
+                .filter(s -> s.getId().equals(developerSpecId))
+                .findAny()
+                .orElse(null);
 
-        developerController.createDeveloper(developerFirstName, developerLastName, null,null);
+
+
+
+        List<Skill> skills = skillController.getAll();
+        out.println(skills);
+        out.println("Enter skill id: ");
+        Integer developerSkillId = scanner.nextInt();
+        Skill selectedSkill = (Skill) skills.stream();
+
+//        Skill devskills = skills.stream()
+//                        .filter(skill -> skill.getId().equals(developerSkillId));
+
+        developerController.createDeveloper(developerFirstName, developerLastName, null,developerSpec);
     }
 
     private void updateDeveloper() {
