@@ -7,12 +7,14 @@ import com.vahram.crudapp.model.Developer;
 import com.vahram.crudapp.model.Skill;
 import com.vahram.crudapp.model.Specialty;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.lang.System.in;
 import static java.lang.System.out;
 import static java.util.Arrays.stream;
 
@@ -94,6 +96,7 @@ public class DeveloperView {
         String developerLastName = scanner.nextLine();
         List<Specialty> specDev = specialtyController.getAll();
         out.println(specDev);
+        out.println("Enter developer specialty id: ");
         Integer developerSpecId = scanner.nextInt();
 
         Specialty developerSpec = specDev.stream()
@@ -101,19 +104,29 @@ public class DeveloperView {
                 .findAny()
                 .orElse(null);
 
+        List<Skill> devSkills = skillController.getAll();
+        out.println(devSkills);
+        out.println("Enter developers skill or skills: ");
+        var scanner = new Scanner(System.in);
 
+        int developerSkillId = scanner.nextInt();
 
+        var selectedSkills = new ArrayList<Skill>();
 
-        List<Skill> skills = skillController.getAll();
-        out.println(skills);
-        out.println("Enter skill id: ");
-        Integer developerSkillId = scanner.nextInt();
-        Skill selectedSkill = (Skill) skills.stream();
+        while (developerSkillId != -1) {
 
-//        Skill devskills = skills.stream()
-//                        .filter(skill -> skill.getId().equals(developerSkillId));
+            int finalDeveloperSkillId = developerSkillId;
+            Skill developerSkill = devSkills.stream()
+                    .filter(d -> d.getId().equals(finalDeveloperSkillId))
+                    .findAny()
+                    .orElse(null);
 
-        developerController.createDeveloper(developerFirstName, developerLastName, null,developerSpec);
+            selectedSkills.add(developerSkill);
+            developerSkillId = scanner.nextInt();
+            out.println("You choose " + developerSkillId);
+        }
+
+        developerController.createDeveloper(developerFirstName, developerLastName, selectedSkills, developerSpec);
     }
 
     private void updateDeveloper() {

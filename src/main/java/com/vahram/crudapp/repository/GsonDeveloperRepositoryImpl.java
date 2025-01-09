@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GsonDeveloperRepositoryImpl implements DeveloperRepository{
-    private final static String FILE_PATH = "D:\\Моя практика\\crudapp\\src\\main\\resources\\skills.json";
+    private final static String FILE_PATH = "D:\\Моя практика\\crudapp\\src\\main\\resources\\developer.json";
     private final static String FILE_ENCODING = "UTF-8";
 
     private final static Gson GSON = new Gson();
@@ -76,7 +76,7 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository{
     private List<Developer> getAllDevelopersInternal() {
         try (FileInputStream fisTargetFile = new FileInputStream(FILE_PATH)) {
             String targetFileStr = IOUtils.toString(fisTargetFile, FILE_ENCODING);
-            Type targetClassType = new TypeToken<ArrayList<Skill>>() {
+            Type targetClassType = new TypeToken<ArrayList<Developer>>() {
             }.getType();
             return GSON.fromJson(targetFileStr, targetClassType);
         } catch (IOException e) {
