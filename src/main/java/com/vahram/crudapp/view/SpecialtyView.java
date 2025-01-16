@@ -28,7 +28,7 @@ public class SpecialtyView {
         System.out.println("3 - обновление специальности");
         System.out.println("4 - удаление специальности");
         System.out.println("5 - получение специальностей");
-        System.out.println("9 - Выход");
+        System.out.println("9 - Назад"); //Заменил "Выход" на "Назад"
     }
 
     private int getInput() {
@@ -63,9 +63,10 @@ public class SpecialtyView {
                 getSpecialties();
                 break;
             case 9:
-                System.out.println("Exit");
-                System.exit(0);
+                System.out.println("Back"); //Заменил Exit на Back
                 break;
+//                System.exit(0);
+//                break;
         }
     }
 

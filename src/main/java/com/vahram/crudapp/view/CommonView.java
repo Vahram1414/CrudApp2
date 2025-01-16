@@ -14,7 +14,8 @@ public class CommonView {
             System.out.println("1. Меню Skill");
             System.out.println("2. Меню Developer");
             System.out.println("3. Меню Specialty");
-            System.out.println("4. Выход");
+            System.out.println("9. Отобразить главное меню"); //добавление от 16 января
+            System.out.println("5. Выход");
             System.out.print("Введите номер действия: ");
 
             String choice = scanner.nextLine();
@@ -28,16 +29,16 @@ public class CommonView {
                 case "3":
                     specialtyView.runMenu();
                     break;
-                case "4":
+                case "9": // добавление от 16 января
+                    System.out.println("Основное меню");
+                    start();
+                case "5":
                     System.out.println("Выход из приложения...");
                     return;
                 default:
                     System.out.println("Неверный выбор. Попробуйте снова.");
             }
         }
-
-
-
     }
 }
 

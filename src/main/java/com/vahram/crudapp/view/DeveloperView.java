@@ -79,13 +79,12 @@ public class DeveloperView {
                 break;
             case 9:
                 System.out.println("Back");
-//                System.exit(0); эту стркоу удалить
                 break;
         }
     }
 
     private void getDevelopers() {
-        List<Skill> developers = skillController.getAll();
+        List<Developer> developers = developerController.getAll(); // поменял Skill на Developer и skill2Controller на developerController
         System.out.println("Список скиллов" + developers);
     }
 
